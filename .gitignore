@@ -1,0 +1,41 @@
+# Virtual environment
+venv/
+ENV/
+env/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE or editor specific files
+.vscode/
+.idea/
+*.swp
+
+# Flask instance files
+instance/
+
+# SQLite database files
+*.sqlite3
+*.db
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# Migrations folder
+migrations/
+
+# Docker files
+*.docker
+
+# Pytest cache
+.cache/
+
+# Coverage reports
+.coverage
+htmlcov/
