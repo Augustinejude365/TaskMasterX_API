@@ -1,19 +1,34 @@
+from models import User, Task
+from routes import api_blueprint
 from flask import Flask
-from config import Config
-from models import db
-from routes import task_routes
-from auth import auth_bp
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_jwt_extended import JWTManager
+import logging.config
+import os
 
+# Initializing Flask app
+app = Flask(__name__)
 
-def create_app(config_class=Config):
-    app = Flask(__name__)
-    app.config.from_object(config_class)
-    db.init_app(app)
+# Loading configurations
+app.config.from_object('config.Config')
 
-    app.register_blueprint(task_routes)
-    app.register_blueprint(auth_bp)
+# Initializing extensions
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+jwt = JWTManager(app)
 
-    return app
+# Loading logging configuration
+logging.config.fileConfig('logging.conf')
 
+# Importing routes
+app.register_blueprint(api_blueprint)
 
-app = create_app()
+# Importing models
+
+# Initializing logging
+logger = logging.getLogger(__name__)
+
+# Running the app
+if __name__ == "__main__":
+    app.run(debug=True)
