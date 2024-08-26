@@ -1,10 +1,13 @@
-from routes import api_blueprint
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 import logging.config
 import os
+
+# Importing models to ensure they are recognized by Alembic
+from models import Task, User
+from routes import api_blueprint
 
 # Initializing Flask app
 app = Flask(__name__)
@@ -20,7 +23,7 @@ jwt = JWTManager(app)
 # Loading logging configuration
 logging.config.fileConfig('logging.conf')
 
-# Importing routes after initializing app
+# Registering routes after initializing app
 app.register_blueprint(api_blueprint)
 
 # Initializing logging
