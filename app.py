@@ -19,7 +19,7 @@ jwt = JWTManager(app)
 # Loading logging configuration
 logging.config.fileConfig('logging.conf')
 
-# Importing routes
+# Importing routes after initializing app
 from routes import api_blueprint
 app.register_blueprint(api_blueprint)
 
