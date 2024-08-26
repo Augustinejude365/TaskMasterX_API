@@ -19,16 +19,13 @@ jwt = JWTManager(app)
 # Loading logging configuration
 logging.config.fileConfig('logging.conf')
 
-# Importing routes after initializing the app and extensions
+# Importing routes
 from routes import api_blueprint
 app.register_blueprint(api_blueprint)
-
-# Importing models after initializing the app and extensions
-from models import User, Task
 
 # Initializing logging
 logger = logging.getLogger(__name__)
 
-# Run the app
+# Running the app
 if __name__ == "__main__":
     app.run(debug=True)
