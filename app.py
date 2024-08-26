@@ -1,3 +1,4 @@
+from routes import api_blueprint
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -20,7 +21,6 @@ jwt = JWTManager(app)
 logging.config.fileConfig('logging.conf')
 
 # Importing routes after initializing app
-from routes import api_blueprint
 app.register_blueprint(api_blueprint)
 
 # Initializing logging
