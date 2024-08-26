@@ -1,11 +1,11 @@
-from models import User, Task
-from routes import api_blueprint
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 import logging.config
 import os
+from routes import api_blueprint
+from models import User, Task
 
 # Initializing Flask app
 app = Flask(__name__)
@@ -23,8 +23,6 @@ logging.config.fileConfig('logging.conf')
 
 # Importing routes
 app.register_blueprint(api_blueprint)
-
-# Importing models
 
 # Initializing logging
 logger = logging.getLogger(__name__)
